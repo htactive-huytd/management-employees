@@ -1,6 +1,7 @@
 <template>
   <div>
     <h1>List Employees</h1>
+
     <table id="employees">
       <thead>
         <tr>
@@ -24,6 +25,8 @@
             <img :src="item.avatar" />
           </td>
           <td>
+            <font-awesome-icon class="icon" icon="edit" size="4x" />
+            <font-awesome-icon class="icon" icon="trash" size="4x" />
           </td>
         </tr>
       </tbody>
@@ -69,23 +72,31 @@ export default {
   width: 100%;
 }
 
-#employees td, #employees th {
+#employees td,
+#employees th {
   border: 1px solid #ddd;
   padding: 8px;
 }
 
-#employees tr:nth-child(even){background-color: #f2f2f2;}
+#employees tr:nth-child(even) {
+  background-color: #f2f2f2;
+}
 
-#employees tr:hover {background-color: #ddd;}
+#employees tr:hover {
+  background-color: #ddd;
+}
 
 #employees th {
   padding-top: 12px;
   padding-bottom: 12px;
   text-align: center;
-  background-color: #4CAF50;
+  background-color: #4caf50;
   color: white;
 }
-td > img{
+td > img {
   width: 200px;
+}
+.icon{
+  margin: 10px;
 }
 </style>
