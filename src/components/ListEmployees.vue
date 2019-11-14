@@ -1,46 +1,19 @@
 <template>
   <div>
     <h1>List Employees</h1>
-    <ModalComponent @closeModal="isOpen = false" @showModal="showModal" :isOpen="isOpen">
-      <table>
-        <thead>
-          <tr>
-            <th>Full Name</th>
-            <th>Age</th>
-            <th>Address</th>
-            <th>Date of birth</th>
-            <th>Company</th>
-            <th>Avatar</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td>
-              <input type="text" placeholder="Enter Fullname" />
-            </td>
-            <td>
-              <input type="number" placeholder="Enter Age" />
-            </td>
-            <td>
-              <input type="text" placeholder="Enter Address" />
-            </td>
-            <td>
-              <input type="date" placeholder="Enter Date of birth" />
-            </td>
-            <td>
-              <input type="text" placeholder="Enter Company" />
-            </td>
-            <td>
-              <input type="url" placeholder="Enter link avatar" />
-            </td>
-          </tr>
-        </tbody>
-      </table>
-      <br>
-      <button>NOT</button>
-      <button>OK</button>
-    </ModalComponent>
+
+    <ModalAddEmployee
+      @closeModal="isOpenAdd = false"
+      :isOpen="isOpenAdd"
+      @addNewEmployees="addNewEmployees"
+      @cancelAddNewEmployees="cancelAddNewEmployees"
+    />
+
+    <button @click="showModal">{{ isOpenAdd ? "Close" : "Add new" }} employees</button>
+    
     <br>
+    <br>
+
     <table id="employees">
       <thead>
         <tr>
@@ -53,15 +26,15 @@
           <th>Action</th>
         </tr>
       </thead>
-      <tbody v-for="item in items" :key="item">
+      <tbody v-for="employee in employees" :key="employee.id">
         <tr>
-          <td>{{item.fullName}}</td>
-          <td>{{item.age}}</td>
-          <td>{{item.address}}</td>
-          <td>{{item.dateBirth}}</td>
-          <td>{{item.company}}</td>
+          <td>{{employee.fullName}}</td>
+          <td>{{employee.age}}</td>
+          <td>{{employee.address}}</td>
+          <td>{{employee.dateBirth}}</td>
+          <td>{{employee.company}}</td>
           <td>
-            <img :src="item.avatar" />
+            <img :src="employee.avatar" />
           </td>
           <td>
             <font-awesome-icon class="icon" icon="edit" size="4x" />
@@ -74,16 +47,16 @@
 </template>
 
 <script>
-import ModalComponent from "./ModalComponent.vue";
+import ModalAddEmployee from "./ModalAddEmployee.vue";
 // import ModalC from './ModalComponent'
 export default {
   components: {
-    ModalComponent
+    ModalAddEmployee
   },
   data() {
     return {
-      isOpen: false,
-      items: [
+      isOpenAdd: false,
+      employees: [
         {
           fullName: "Trần Đức Huy",
           address: "130 Duy Tân, Hòa Thuận Nam, Hải Châu, Đà Nẵng 550000",
@@ -109,10 +82,17 @@ export default {
     };
   },
   methods: {
-    showModal(){
-      this.isOpen = !this.isOpen;
+    showModal() {
+      this.isOpenAdd = !this.isOpenAdd;
+    },
+    addNewEmployees(newEmployee) {
+      this.employees.unshift(newEmployee);
+      this.isOpenAdd = !this.isOpenAdd;
+    },
+    cancelAddNewEmployees() {
+      this.isOpenAdd = !this.isOpenAdd;
     }
-  },
+  }
 };
 </script>
 
@@ -149,5 +129,12 @@ td > img {
 }
 .icon {
   margin: 10px;
+}
+button {
+  padding: 7px;
+  margin-top: 10px;
+  background-color: green;
+  color: white;
+  font-size: 1.1rem;
 }
 </style>
