@@ -1,7 +1,46 @@
 <template>
   <div>
     <h1>List Employees</h1>
-
+    <ModalComponent @closeModal="isOpen = false" @showModal="showModal" :isOpen="isOpen">
+      <table>
+        <thead>
+          <tr>
+            <th>Full Name</th>
+            <th>Age</th>
+            <th>Address</th>
+            <th>Date of birth</th>
+            <th>Company</th>
+            <th>Avatar</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>
+              <input type="text" placeholder="Enter Fullname" />
+            </td>
+            <td>
+              <input type="number" placeholder="Enter Age" />
+            </td>
+            <td>
+              <input type="text" placeholder="Enter Address" />
+            </td>
+            <td>
+              <input type="date" placeholder="Enter Date of birth" />
+            </td>
+            <td>
+              <input type="text" placeholder="Enter Company" />
+            </td>
+            <td>
+              <input type="url" placeholder="Enter link avatar" />
+            </td>
+          </tr>
+        </tbody>
+      </table>
+      <br>
+      <button>NOT</button>
+      <button>OK</button>
+    </ModalComponent>
+    <br>
     <table id="employees">
       <thead>
         <tr>
@@ -14,7 +53,7 @@
           <th>Action</th>
         </tr>
       </thead>
-      <tbody v-for="item in items" :key="item.id">
+      <tbody v-for="item in items" :key="item">
         <tr>
           <td>{{item.fullName}}</td>
           <td>{{item.age}}</td>
@@ -35,13 +74,19 @@
 </template>
 
 <script>
+import ModalComponent from "./ModalComponent.vue";
+// import ModalC from './ModalComponent'
 export default {
+  components: {
+    ModalComponent
+  },
   data() {
     return {
+      isOpen: false,
       items: [
         {
           fullName: "Trần Đức Huy",
-          address: "Thua Thien Hue",
+          address: "130 Duy Tân, Hòa Thuận Nam, Hải Châu, Đà Nẵng 550000",
           age: 20,
           dateBirth: "18/09/1994",
           company: "HTactive",
@@ -51,7 +96,8 @@ export default {
         },
         {
           fullName: "Chu Cuong Cuong",
-          address: "Da Nang",
+          address:
+            "Tòa nhà Thành Lợi 2, số 01 Lê Đình Lý, phường Vĩnh Trung, 550000",
           age: 21,
           dateBirth: "18/09/1995",
           company: "HTactive",
@@ -61,7 +107,12 @@ export default {
         }
       ]
     };
-  }
+  },
+  methods: {
+    showModal(){
+      this.isOpen = !this.isOpen;
+    }
+  },
 };
 </script>
 
@@ -96,7 +147,7 @@ export default {
 td > img {
   width: 200px;
 }
-.icon{
+.icon {
   margin: 10px;
 }
 </style>
