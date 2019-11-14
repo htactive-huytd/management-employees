@@ -8,11 +8,10 @@
       @addNewEmployees="addNewEmployees"
       @cancelAddNewEmployees="cancelAddNewEmployees"
     />
+    <button @click="showModalAdd">{{ isOpenAdd ? "Close" : "Add new" }} employees</button>
 
-    <button @click="showModal">{{ isOpenAdd ? "Close" : "Add new" }} employees</button>
-    
-    <br>
-    <br>
+    <br />
+    <br />
 
     <table id="employees">
       <thead>
@@ -26,7 +25,7 @@
           <th>Action</th>
         </tr>
       </thead>
-      <tbody v-for="employee in employees" :key="employee.id">
+      <tbody v-for="(employee, index) in employees" :key="index">
         <tr>
           <td>{{employee.fullName}}</td>
           <td>{{employee.age}}</td>
@@ -37,31 +36,45 @@
             <img :src="employee.avatar" />
           </td>
           <td>
-            <font-awesome-icon class="icon" icon="edit" size="4x" />
-            <font-awesome-icon class="icon" icon="trash" size="4x" />
+            <button @click="showModalEdit(index)">
+              <font-awesome-icon class="icon" icon="edit" size="4x" />
+            </button>
+            <button>
+              <font-awesome-icon class="icon" icon="trash" size="4x" />
+            </button>
           </td>
         </tr>
       </tbody>
     </table>
+    <ModalEditEmployee
+              @closeModalEdit="isOpenEdit = false"
+              :isOpen="isOpenEdit"
+              :editEmployee="employees[isIndex]"
+              @editEmployees="editEmployees"
+              @cancelEditEmployees="cancelEditEmployees"
+            />
   </div>
 </template>
 
 <script>
 import ModalAddEmployee from "./ModalAddEmployee.vue";
-// import ModalC from './ModalComponent'
+import ModalEditEmployee from "./ModalEditEmployee.vue";
 export default {
   components: {
-    ModalAddEmployee
+    ModalAddEmployee,
+    ModalEditEmployee
   },
   data() {
     return {
       isOpenAdd: false,
+      isOpenEdit: false,
+      isIndex: null,
       employees: [
         {
           fullName: "Trần Đức Huy",
           address: "130 Duy Tân, Hòa Thuận Nam, Hải Châu, Đà Nẵng 550000",
           age: 20,
-          dateBirth: "18/09/1994",
+          dateBirth: "1111-11-11",
           company: "HTactive",
           avatar:
             "https://cdn1.iconfinder.com/data/icons/user-pictures/101/malecostume-512.png",
@@ -72,7 +85,7 @@ export default {
           address:
             "Tòa nhà Thành Lợi 2, số 01 Lê Đình Lý, phường Vĩnh Trung, 550000",
           age: 21,
-          dateBirth: "18/09/1995",
+          dateBirth: "1111-11-11",
           company: "HTactive",
           avatar:
             "https://taoanhonline.com/wp-content/uploads/2019/08/hinh-anh-avatar-0.jpg",
@@ -82,7 +95,7 @@ export default {
     };
   },
   methods: {
-    showModal() {
+    showModalAdd() {
       this.isOpenAdd = !this.isOpenAdd;
     },
     addNewEmployees(newEmployee) {
@@ -91,7 +104,18 @@ export default {
     },
     cancelAddNewEmployees() {
       this.isOpenAdd = !this.isOpenAdd;
+    },
+    showModalEdit(index) {
+      this.isIndex = index;
+      this.isOpenEdit = !this.isOpenEdit;
+    },
+    editEmployees(){
+
+    },
+    cancelEditEmployees(){
+      this.isOpenEdit = !this.isOpenEdit;
     }
+
   }
 };
 </script>

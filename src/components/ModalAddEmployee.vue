@@ -49,8 +49,6 @@
         </div>
       </div>
     </transition>
-
-    <!-- <h3>Tran Duc Huy</h3> -->
   </div>
 </template>
 
