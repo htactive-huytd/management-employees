@@ -68,8 +68,7 @@ export default {
         company: "",
         avatar: "",
         action: ""
-      },
-      oldEmployee: {}
+      }
     };
   },
   methods: {
@@ -85,14 +84,20 @@ export default {
       this.$emit("cancelEditEmployees");
     },
     editEmployees() {
-      this.$emit("editEmployees");
+      const newDataEdit = {
+        fullName: this.employee.fullName,
+        address: this.employee.address,
+        age: this.employee.age,
+        dateBirth: this.employee.dateBirth,
+        company: this.employee.company,
+        avatar: this.employee.avatar,
+        action: this.employee.action
+      };
+      this.$emit("editEmployees", newDataEdit);
     }
   },
   watch: {
     editEmployee(newData, oldData) {
-      // console.log(newData);
-      // console.log(oldData);
-
       this.employee = {
         fullName: this.editEmployee.fullName,
         address: this.editEmployee.address,
@@ -103,17 +108,6 @@ export default {
       };
     }
   }
-  // mounted() {
-  //   console.log(this.editEmployee);
-  //   this.employee = {
-  //     fullName: this.editEmployee.fullName,
-  //     address: this.editEmployee.address,
-  //     age: this.editEmployee.age,
-  //     dateBirth: this.editEmployee.dateBirth,
-  //     company: this.editEmployee.company,
-  //     avatar: this.editEmployee.avatar
-  //   };
-  // }
 };
 </script>
 

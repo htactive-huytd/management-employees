@@ -47,12 +47,12 @@
       </tbody>
     </table>
     <ModalEditEmployee
-              @closeModalEdit="isOpenEdit = false"
-              :isOpen="isOpenEdit"
-              :editEmployee="employees[isIndex]"
-              @editEmployees="editEmployees"
-              @cancelEditEmployees="cancelEditEmployees"
-            />
+      @closeModalEdit="isOpenEdit = false"
+      :isOpen="isOpenEdit"
+      :editEmployee="employees[isIndex]"
+      @editEmployees="editEmployees"
+      @cancelEditEmployees="cancelEditEmployees"
+    />
   </div>
 </template>
 
@@ -74,7 +74,7 @@ export default {
           fullName: "Trần Đức Huy",
           address: "130 Duy Tân, Hòa Thuận Nam, Hải Châu, Đà Nẵng 550000",
           age: 20,
-          dateBirth: "1111-11-11",
+          dateBirth: "1111-11-15",
           company: "HTactive",
           avatar:
             "https://cdn1.iconfinder.com/data/icons/user-pictures/101/malecostume-512.png",
@@ -85,7 +85,7 @@ export default {
           address:
             "Tòa nhà Thành Lợi 2, số 01 Lê Đình Lý, phường Vĩnh Trung, 550000",
           age: 21,
-          dateBirth: "1111-11-11",
+          dateBirth: "1111-11-17",
           company: "HTactive",
           avatar:
             "https://taoanhonline.com/wp-content/uploads/2019/08/hinh-anh-avatar-0.jpg",
@@ -109,13 +109,13 @@ export default {
       this.isIndex = index;
       this.isOpenEdit = !this.isOpenEdit;
     },
-    editEmployees(){
-
+    editEmployees(newDataEdit) {
+      this.employees.splice(this.isIndex, 1, newDataEdit);
+      this.isOpenEdit = !this.isOpenEdit;
     },
-    cancelEditEmployees(){
+    cancelEditEmployees() {
       this.isOpenEdit = !this.isOpenEdit;
     }
-
   }
 };
 </script>

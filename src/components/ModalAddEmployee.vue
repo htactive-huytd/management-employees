@@ -92,7 +92,7 @@ export default {
         action: ""
       };
     },
-    cancelAddNewEmployees(){
+    cancelAddNewEmployees() {
       this.employee = {
         fullName: "",
         address: "",
