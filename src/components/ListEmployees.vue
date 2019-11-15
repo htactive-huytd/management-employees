@@ -34,9 +34,15 @@
             <button @click="showModalEdit(index)">
               <font-awesome-icon class="icon" icon="edit" size="4x" />
             </button>
-            <button>
-              <font-awesome-icon class="icon" icon="info-circle" size="4x" />
-            </button>
+
+            <router-link
+              :to=" { name: 'ShowDetailEmployee', params: { id: index, dataEmployee: employees[index]  }}"
+            >
+              <button>
+                <font-awesome-icon class="icon" icon="info-circle" size="4x" />
+              </button>
+            </router-link>
+
             <button id="trash" @click="showConfirmDelete(index)">
               <font-awesome-icon class="icon" icon="trash" size="4x" />
             </button>
@@ -123,6 +129,9 @@ export default {
     },
     cancelDeleteEmployees() {
       this.isOpenConfirm = !this.isOpenConfirm;
+    },
+    showDetail(index) {
+      this.isIndex = index;
     }
   }
 };

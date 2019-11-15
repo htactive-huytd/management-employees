@@ -10,18 +10,18 @@
           <th>Date of birth</th>
           <th>Company</th>
           <th>Avatar</th>
-          <th>Action</th>
+          
         </tr>
       </thead>
       <tbody>
         <tr>
-          <td>{{employee.fullName}}</td>
-          <td>{{employee.age}}</td>
-          <td>{{employee.address}}</td>
-          <td>{{employee.dateBirth}}</td>
-          <td>{{employee.company}}</td>
+          <td>{{dataEmployee.fullName}}</td>
+          <td>{{dataEmployee.age}}</td>
+          <td>{{dataEmployee.address}}</td>
+          <td>{{dataEmployee.dateBirth}}</td>
+          <td>{{dataEmployee.company}}</td>
           <td>
-            <img :src="employee.avatar" />
+            <img :src="dataEmployee.avatar" />
           </td>
         </tr>
       </tbody>
@@ -32,6 +32,7 @@
 <script>
 export default {
   props: {
+    id: Number,
     index: Number,
     dataEmployee: Object
   },
@@ -48,18 +49,18 @@ export default {
       }
     };
   },
-  watch: {
-    dataEmployee(newData, oldData) {
-      this.employee = {
-        fullName: this.dataEmployee.fullName,
-        address: this.dataEmployee.address,
-        age: this.dataEmployee.age,
-        dateBirth: this.dataEmployee.dateBirth,
-        company: this.dataEmployee.company,
-        avatar: this.dataEmployee.avatar
-      };
-    }
-  }
+  // watch: {
+  //   dataEmployee(newData, oldData) {
+  //     this.employee = {
+  //       fullName: this.dataEmployee.fullName,
+  //       address: this.dataEmployee.address,
+  //       age: this.dataEmployee.age,
+  //       dateBirth: this.dataEmployee.dateBirth,
+  //       company: this.dataEmployee.company,
+  //       avatar: this.dataEmployee.avatar
+  //     };
+  //   }
+  // }
 };
 </script>
 

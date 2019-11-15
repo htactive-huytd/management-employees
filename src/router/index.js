@@ -31,9 +31,10 @@ export default new Router({
       component: ModalConfirmDelete
     },
     {
-      path: '/showdetail',
+      path: '/showdetail/:id',
       name: 'ShowDetailEmployee',
-      component: ShowDetailEmployee
+      component: ShowDetailEmployee,
+      props: true
     }
   ]
 })
