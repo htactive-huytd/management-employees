@@ -7,12 +7,9 @@
             <table>
               <thead>
                 <tr>
-                  <th>Full Name</th>
-                  <th>Age</th>
-                  <th>Address</th>
-                  <th>Date of birth</th>
-                  <th>Company</th>
-                  <th>Avatar</th>
+                  <th v-for="(header, index) in headers" :key="index">
+                    <template v-if="header !='Action'">{{header}}</template>
+                  </th>
                 </tr>
               </thead>
               <tbody>
@@ -55,7 +52,8 @@
 <script>
 export default {
   props: {
-    isOpen: Boolean
+    isOpen: Boolean,
+    headers: Array
   },
   data() {
     return {

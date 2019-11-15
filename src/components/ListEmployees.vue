@@ -5,6 +5,7 @@
     <ModalAddEmployee
       @closeModal="isOpenAdd = false"
       :isOpen="isOpenAdd"
+      :headers="headers"
       @addNewEmployees="addNewEmployees"
       @cancelAddNewEmployees="cancelAddNewEmployees"
     />
@@ -16,13 +17,7 @@
     <table id="employees">
       <thead>
         <tr>
-          <th>Full Name</th>
-          <th>Age</th>
-          <th>Address</th>
-          <th>Date of birth</th>
-          <th>Company</th>
-          <th>Avatar</th>
-          <th>Action</th>
+          <th v-for="(header, index) in headers" :key="index">{{header}}</th>
         </tr>
       </thead>
       <tbody v-for="(employee, index) in employees" :key="index">
@@ -58,6 +53,7 @@
     <ModalEditEmployee
       @closeModalEdit="isOpenEdit = false"
       :isOpen="isOpenEdit"
+      :headers="headers"
       :editEmployee="employees[isIndex]"
       @editEmployees="editEmployees"
       @cancelEditEmployees="cancelEditEmployees"
@@ -81,6 +77,15 @@ export default {
       isOpenEdit: false,
       isOpenConfirm: false,
       isIndex: null,
+      headers: [
+        "Full Name",
+        "Age",
+        "Address",
+        "Date of birth",
+        "Company",
+        "Avatar",
+        "Action"
+      ],
       employees: [
         {
           fullName: "Trần Đức Huy",
