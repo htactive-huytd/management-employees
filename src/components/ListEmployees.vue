@@ -40,12 +40,21 @@
               <font-awesome-icon class="icon" icon="edit" size="4x" />
             </button>
             <button>
+              <font-awesome-icon class="icon" icon="info-circle" size="4x" />
+            </button>
+            <button id="trash" @click="showConfirmDelete(index)">
               <font-awesome-icon class="icon" icon="trash" size="4x" />
             </button>
           </td>
         </tr>
       </tbody>
     </table>
+    <ModalConfirmDelete
+      @closeModalConfirm="isOpenConfirm = false"
+      :isOpen="isOpenConfirm"
+      @deleteEmployees="deleteEmployees"
+      @cancelDeleteEmployees="cancelDeleteEmployees"
+    />
     <ModalEditEmployee
       @closeModalEdit="isOpenEdit = false"
       :isOpen="isOpenEdit"
@@ -59,15 +68,18 @@
 <script>
 import ModalAddEmployee from "./ModalAddEmployee.vue";
 import ModalEditEmployee from "./ModalEditEmployee.vue";
+import ModalConfirmDelete from "./ModalConfirmDelete";
 export default {
   components: {
     ModalAddEmployee,
-    ModalEditEmployee
+    ModalEditEmployee,
+    ModalConfirmDelete
   },
   data() {
     return {
       isOpenAdd: false,
       isOpenEdit: false,
+      isOpenConfirm: false,
       isIndex: null,
       employees: [
         {
@@ -115,12 +127,23 @@ export default {
     },
     cancelEditEmployees() {
       this.isOpenEdit = !this.isOpenEdit;
+    },
+    showConfirmDelete(index) {
+      this.isIndex = index;
+      this.isOpenConfirm = !this.isOpenConfirm;
+    },
+    deleteEmployees() {
+      this.employees.splice(this.isIndex, 1);
+      this.isOpenConfirm = !this.isOpenConfirm;
+    },
+    cancelDeleteEmployees() {
+      this.isOpenConfirm = !this.isOpenConfirm;
     }
   }
 };
 </script>
 
-<style >
+<style scoped>
 #employees {
   font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
   border-collapse: collapse;
@@ -160,5 +183,8 @@ button {
   background-color: green;
   color: white;
   font-size: 1.1rem;
+}
+#trash {
+  background-color: red;
 }
 </style>
