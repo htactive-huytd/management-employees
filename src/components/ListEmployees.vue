@@ -65,6 +65,8 @@
 import ModalAddEmployee from "./ModalAddEmployee.vue";
 import ModalEditEmployee from "./ModalEditEmployee.vue";
 import ModalConfirmDelete from "./ModalConfirmDelete";
+import DataEmployee from "../data/data.json";
+
 export default {
   components: {
     ModalAddEmployee,
@@ -86,29 +88,7 @@ export default {
         "Avatar",
         "Action"
       ],
-      employees: [
-        {
-          fullName: "Trần Đức Huy",
-          address: "130 Duy Tân, Hòa Thuận Nam, Hải Châu, Đà Nẵng 550000",
-          age: 20,
-          dateBirth: "1111-11-15",
-          company: "HTactive",
-          avatar:
-            "https://cdn1.iconfinder.com/data/icons/user-pictures/101/malecostume-512.png",
-          action: ""
-        },
-        {
-          fullName: "Chu Cuong Cuong",
-          address:
-            "Tòa nhà Thành Lợi 2, số 01 Lê Đình Lý, phường Vĩnh Trung, 550000",
-          age: 21,
-          dateBirth: "1111-11-17",
-          company: "HTactive",
-          avatar:
-            "https://taoanhonline.com/wp-content/uploads/2019/08/hinh-anh-avatar-0.jpg",
-          action: ""
-        }
-      ]
+      employees: DataEmployee.employees
     };
   },
   methods: {

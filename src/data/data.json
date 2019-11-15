@@ -1,0 +1,31 @@
+{
+  "employees": [
+    {
+          "fullName": "Trần Đức Huy",
+          "address": "130 Duy Tân, Hòa Thuận Nam, Hải Châu, Đà Nẵng 550000",
+          "age": 20,
+          "dateBirth": "1994-09-18",
+          "company": "HTactive",
+          "avatar": "https://cdn1.iconfinder.com/data/icons/user-pictures/101/malecostume-512.png",
+          "action": ""
+    },
+    {
+          "fullName": "Chu Cuong Cuong",
+          "address": "Tòa nhà Thành Lợi 2, số 01 Lê Đình Lý, phường Vĩnh Trung, 550000",
+          "age": 21,
+          "dateBirth": "2000-11-17",
+          "company": "HTactive",
+          "avatar": "https://cdn3.iconfinder.com/data/icons/business-avatar-1/512/10_avatar-512.png",
+          "action": ""
+    },
+    {
+      "fullName": "Trần Anh Anh",
+      "address": "130 Hải Châu, Đà Nẵng 550000",
+      "age": 30,
+      "dateBirth": "1997-11-15",
+      "company": "HTactive",
+      "avatar": "https://cdn.iconscout.com/icon/free/png-256/avatar-367-456319.png",
+      "action": ""
+    }
+  ]
+}

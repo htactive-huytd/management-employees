@@ -111,7 +111,6 @@ export default {
 
 <style scoped>
 .modal {
-  /* width: 500px; */
   margin: 0px auto;
   padding: 20px;
   background-color: #fff;
