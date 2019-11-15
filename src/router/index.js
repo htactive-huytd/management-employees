@@ -4,6 +4,7 @@ import ListEmployees from '@/components/ListEmployees'
 import ModalAddEmployee from '@/components/ModalAddEmployee'
 import ModalEditEmployee from '@/components/ModalEditEmployee'
 import ModalConfirmDelete from '@/components/ModalConfirmDelete'
+import ShowDetailEmployee from '@/components/ShowDetailEmployee'
 
 Vue.use(Router)
 
@@ -28,6 +29,11 @@ export default new Router({
       path: '/modalconfirm',
       name: 'ModalConfirmDelete',
       component: ModalConfirmDelete
+    },
+    {
+      path: '/showdetail',
+      name: 'ShowDetailEmployee',
+      component: ShowDetailEmployee
     }
   ]
 })
