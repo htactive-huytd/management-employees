@@ -3,6 +3,14 @@
 import Vue from 'vue'
 import App from './App'
 import router from './router'
+import { library } from '@fortawesome/fontawesome-svg-core'
+import { faTrash, faEdit, faInfoCircle } from '@fortawesome/free-solid-svg-icons'
+import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
+
+//Add use icon trash and edit
+library.add(faTrash, faEdit, faInfoCircle)
+
+Vue.component('font-awesome-icon', FontAwesomeIcon)
 
 Vue.config.productionTip = false
 
