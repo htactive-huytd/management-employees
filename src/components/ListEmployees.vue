@@ -129,9 +129,6 @@ export default {
     },
     cancelDeleteEmployees() {
       this.isOpenConfirm = !this.isOpenConfirm;
-    },
-    showDetail(index) {
-      this.isIndex = index;
     }
   }
 };

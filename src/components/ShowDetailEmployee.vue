@@ -11,7 +11,7 @@
           <th>Company</th>
           <th>Avatar</th>
           
-        </tr>
+        </tr>Name
       </thead>
       <tbody>
         <tr>
@@ -38,29 +38,8 @@ export default {
   },
   data() {
     return {
-      employee: {
-        fullName: "",
-        address: "",
-        age: "",
-        dateBirth: "",
-        company: "",
-        avatar: "",
-        action: ""
-      }
     };
-  },
-  // watch: {
-  //   dataEmployee(newData, oldData) {
-  //     this.employee = {
-  //       fullName: this.dataEmployee.fullName,
-  //       address: this.dataEmployee.address,
-  //       age: this.dataEmployee.age,
-  //       dateBirth: this.dataEmployee.dateBirth,
-  //       company: this.dataEmployee.company,
-  //       avatar: this.dataEmployee.avatar
-  //     };
-  //   }
-  // }
+  }
 };
 </script>
 
